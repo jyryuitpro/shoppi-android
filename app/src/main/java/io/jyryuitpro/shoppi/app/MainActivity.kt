@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     // layout inflate, 데이터 초기화
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product_detail)
+        setContentView(R.layout.activity_main)
         Log.d(TAG, "onCreate")
     }
 
