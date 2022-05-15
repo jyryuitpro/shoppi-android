@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="io.jyryuitpro.shoppi.app.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="io.jyryuitpro.shoppi.app.CategoryFragment"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/navigation_cart"
+        android:name="io.jyryuitpro.shoppi.app.CartFragment"
+        android:label="CartFragment" />
+</navigation>
