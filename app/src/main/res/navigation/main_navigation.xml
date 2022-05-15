@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="io.jyryuitpro.shoppi.app.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_home_to_product_detail"
+            app:destination="@id/navigation_product_detail" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_category"
         android:name="io.jyryuitpro.shoppi.app.CategoryFragment"
@@ -16,4 +20,8 @@
         android:id="@+id/navigation_cart"
         android:name="io.jyryuitpro.shoppi.app.CartFragment"
         android:label="CartFragment" />
+    <fragment
+        android:id="@+id/navigation_product_detail"
+        android:name="io.jyryuitpro.shoppi.app.ProductDetailFragment"
+        android:label="ProductDetailFragment" />
 </navigation>

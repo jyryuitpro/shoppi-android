@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class HomeFragment : Fragment() {
     override fun onCreateView(
@@ -20,9 +21,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.btn_enter_product_detail)
         button.setOnClickListener {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.add(R.id.container_main, ProductDetailFragment())
-            transaction.commit()
+//            val transaction = parentFragmentManager.beginTransaction()
+//            transaction.add(R.id.container_main, ProductDetailFragment())
+//            transaction.commit()
+            findNavController().navigate(R.id.action_home_to_product_detail)
         }
     }
 }
