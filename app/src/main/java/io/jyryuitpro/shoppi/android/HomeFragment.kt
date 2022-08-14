@@ -1,6 +1,7 @@
 package io.jyryuitpro.shoppi.android
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,5 +30,10 @@ class HomeFragment : Fragment() {
 //            transaction.commit()
             findNavController().navigate(R.id.action_home_to_product_detail)
         }
+
+        val assetLoader = AssetLoader()
+//        assetLoader.getJsonString(context, "home.json")
+        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
+        Log.d("homeData", homeData ?: "")
     }
 }
