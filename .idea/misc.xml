@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_splash_screen.xml" value="0.473" />
+        <entry key="app/src/main/res/drawable/background_white.xml" value="0.505" />
         <entry key="app/src/main/res/drawable/selector_cart_icon.xml" value="0.474" />
         <entry key="app/src/main/res/drawable/selector_category_icon.xml" value="0.473" />
         <entry key="app/src/main/res/drawable/selector_home_icon.xml" value="0.473" />
@@ -14,6 +15,7 @@
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.7979166666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_product_detail.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_home_banner.xml" value="0.5625" />
         <entry key="app/src/main/res/menu/navigation_main_menu.xml" value="0.47760416666666666" />
       </map>
     </option>
