@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import org.json.JSONObject
 
@@ -24,13 +26,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = view.findViewById<Button>(R.id.btn_enter_product_detail)
-        button.setOnClickListener {
+//        val button = view.findViewById<Button>(R.id.btn_enter_product_detail)
+//        button.setOnClickListener {
 //            val transaction = parentFragmentManager.beginTransaction()
 //            transaction.add(R.id.container_main, ProductDetailFragment())
 //            transaction.commit()
-            findNavController().navigate(R.id.action_home_to_product_detail)
-        }
+//            findNavController().navigate(R.id.action_home_to_product_detail)
+//        }
+
+        val toolbarTitle = view.findViewById<TextView>(R.id.toolbar_home_title)
+        val toolbarIcon = view.findViewById<ImageView>(R.id.toolbar_home_icon)
 
         val assetLoader = AssetLoader()
 //        assetLoader.getJsonString(context, "home.json")
@@ -42,8 +47,17 @@ class HomeFragment : Fragment() {
             val title = jsonObject.getJSONObject("title")
             val text = title.getString("text")
             val iconUrl = title.getString("icon_url")
-            val titleValue = Title(text, iconUrl)
-            titleValue.text
+//            val titleValue = Title(text, iconUrl)
+//            toolbarTitle.text = titleValue.text
+            toolbarTitle.text = text
+
+//            GlideApp.with(this)
+//                .load(titleValue.iconUrl)
+//                .into(toolbarIcon)
+
+            GlideApp.with(this)
+                .load(iconUrl)
+                .into(toolbarIcon)
 
             val topBanners = jsonObject.getJSONArray("top_banners")
             val firstBanner = topBanners.getJSONObject(0)
