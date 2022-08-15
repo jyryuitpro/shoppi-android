@@ -10,6 +10,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.gson.Gson
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
@@ -36,37 +39,51 @@ class HomeFragment : Fragment() {
 
         val toolbarTitle = view.findViewById<TextView>(R.id.toolbar_home_title)
         val toolbarIcon = view.findViewById<ImageView>(R.id.toolbar_home_icon)
+        val viewpager = view.findViewById<ViewPager2>(R.id.viewpager_home_banner)
+        val viewpagerIndicator = view.findViewById<TabLayout>(R.id.viewpager_home_banner_indicator)
 
         val assetLoader = AssetLoader()
 //        assetLoader.getJsonString(context, "home.json")
-        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
-        Log.d("homeData", homeData ?: "")
+//        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
+//        Log.d("homeData", homeData ?: "")
+        val homeJsonString = assetLoader.getJsonString(requireContext(), "home.json")
 
-        if (!homeData.isNullOrEmpty()) {
-            val jsonObject = JSONObject(homeData)
-            val title = jsonObject.getJSONObject("title")
-            val text = title.getString("text")
-            val iconUrl = title.getString("icon_url")
+        if (!homeJsonString.isNullOrEmpty()) {
+            val gson = Gson()
+            val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
+
+//            val jsonObject = JSONObject(homeJsonString)
+//            val title = jsonObject.getJSONObject("title")
+//            val text = title.getString("text")
+//            val iconUrl = title.getString("icon_url")
 //            val titleValue = Title(text, iconUrl)
 //            toolbarTitle.text = titleValue.text
-            toolbarTitle.text = text
+//            toolbarTitle.text = text
+            toolbarTitle.text = homeData.title.text
 
 //            GlideApp.with(this)
 //                .load(titleValue.iconUrl)
 //                .into(toolbarIcon)
 
+//            GlideApp.with(this)
+//                .load(iconUrl)
+//                .into(toolbarIcon)
+
             GlideApp.with(this)
-                .load(iconUrl)
+                .load(homeData.title.iconUrl)
                 .into(toolbarIcon)
 
-            val topBanners = jsonObject.getJSONArray("top_banners")
-            val firstBanner = topBanners.getJSONObject(0)
-            val label = firstBanner.getString("label")
-            val productDetail = firstBanner.getJSONObject("product_detail")
-            val price = productDetail.getInt("price")
+//            val firstBanner = topBanners.getJSONObject(0)
+//            val label = firstBanner.getString("label")
+//            val productDetail = firstBanner.getJSONObject("product_detail")
+//            val price = productDetail.getInt("price")
 
-            Log.d("text", "text=${text}, iconUrl=${iconUrl}")
-            Log.d("firstBanner", "label=${label}, price=${price}")
+//            Log.d("text", "text=${text}, iconUrl=${iconUrl}")
+//            Log.d("firstBanner", "label=${label}, price=${price}")
+
+            viewpager.adapter = HomeBannerAdapter().apply {
+                submitList(homeData.topBanners)
+            }
         }
     }
 }

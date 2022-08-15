@@ -15,7 +15,6 @@
             android:layout_height="wrap_content"
             android:background="@color/shoppi_white"
             app:contentInsetStart="0dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_scrollFlags="scroll|enterAlways">
 
             <TextView
@@ -46,7 +45,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
