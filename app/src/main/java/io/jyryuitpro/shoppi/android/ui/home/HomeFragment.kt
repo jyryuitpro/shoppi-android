@@ -1,4 +1,4 @@
-package io.jyryuitpro.shoppi.android.ui
+package io.jyryuitpro.shoppi.android.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,16 +8,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.gson.Gson
 import io.jyryuitpro.shoppi.android.*
+import io.jyryuitpro.shoppi.android.ui.common.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,28 +43,28 @@ class HomeFragment : Fragment() {
         val viewpager = view.findViewById<ViewPager2>(R.id.viewpager_home_banner)
         val viewpagerIndicator = view.findViewById<TabLayout>(R.id.viewpager_home_banner_indicator)
 
-        val assetLoader = AssetLoader()
+//        val assetLoader = AssetLoader()
 //        assetLoader.getJsonString(context, "home.json")
 //        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
 //        Log.d("homeData", homeData ?: "")
-        val homeJsonString = assetLoader.getJsonString(requireContext(), "home.json")
+//        val homeJsonString = assetLoader.getJsonString(requireContext(), "home.json")
 
-        if (!homeJsonString.isNullOrEmpty()) {
-            val gson = Gson()
-            val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
+//        if (!homeJsonString.isNullOrEmpty()) {
+//            val gson = Gson()
+//            val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
 
-            viewModel.title.observe(viewLifecycleOwner) { title ->
-                toolbarTitle.text = title.text
-                GlideApp.with(this)
-                    .load(title.iconUrl)
-                    .into(toolbarIcon)
-            }
+//            viewModel.title.observe(viewLifecycleOwner) { title ->
+//                toolbarTitle.text = title.text
+//                GlideApp.with(this)
+//                    .load(title.iconUrl)
+//                    .into(toolbarIcon)
+//            }
 
-            viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
-                viewpager.adapter = HomeBannerAdapter().apply {
-                    submitList(banners)
-                }
-            }
+//            viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
+//                viewpager.adapter = HomeBannerAdapter().apply {
+//                    submitList(banners)
+//                }
+//            }
 
 //            val jsonObject = JSONObject(homeJsonString)
 //            val title = jsonObject.getJSONObject("title")
@@ -100,18 +99,44 @@ class HomeFragment : Fragment() {
 //                submitList(homeData.topBanners)
 //            }
 
-            val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
-            val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
-            val screenWidth = resources.displayMetrics.widthPixels
-            val offset = screenWidth - pageWidth - pageMargin
+//            val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
+//            val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
+//            val screenWidth = resources.displayMetrics.widthPixels
+//            val offset = screenWidth - pageWidth - pageMargin
 
-            viewpager.offscreenPageLimit = 3
-            viewpager.setPageTransformer { page, position ->
-                page.translationX = position * -offset
-            }
-            TabLayoutMediator(viewpagerIndicator, viewpager) { tab, position ->
+//            viewpager.offscreenPageLimit = 3
+//            viewpager.setPageTransformer { page, position ->
+//                page.translationX = position * -offset
+//            }
+//            TabLayoutMediator(viewpagerIndicator, viewpager) { tab, position ->
 
-            }.attach()
+//            }.attach()
+//        }
+
+        viewModel.title.observe(viewLifecycleOwner) { title ->
+            toolbarTitle.text = title.text
+            GlideApp.with(this)
+                .load(title.iconUrl)
+                .into(toolbarIcon)
         }
+
+        viewpager.adapter = HomeBannerAdapter().apply {
+            viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
+                submitList(banners)
+            }
+        }
+
+        val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
+        val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
+        val screenWidth = resources.displayMetrics.widthPixels
+        val offset = screenWidth - pageWidth - pageMargin
+
+        viewpager.offscreenPageLimit = 3
+        viewpager.setPageTransformer { page, position ->
+            page.translationX = position * -offset
+        }
+        TabLayoutMediator(viewpagerIndicator, viewpager) { tab, position ->
+
+        }.attach()
     }
 }
