@@ -33,7 +33,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/description_productl_thumbnail"
+                android:contentDescription="@string/description_product_thumbnail"
                 android:src="@drawable/img_pdp_top_01"
                 app:layout_constraintDimensionRatio="W, 1:1"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -12,11 +12,13 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import io.jyryuitpro.shoppi.android.*
+import io.jyryuitpro.shoppi.android.databinding.FragmentHomeBinding
 import io.jyryuitpro.shoppi.android.ui.common.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +26,9 @@ class HomeFragment : Fragment() {
     ): View? {
         // attachToRoot: 바로 RootView에 추가할 것인가? 프래그먼트는 Host가 되는 액티비티 위에 layout을 inflate하는 것이기 때문에
         // 액티비티가 모두 구성된 이후에 layout이 inflate되어야 한다. 생성되는 시점을 늦추기 위해 false를 전달한다.
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        // return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,10 +42,10 @@ class HomeFragment : Fragment() {
 //            findNavController().navigate(R.id.action_home_to_product_detail)
 //        }
 
-        val toolbarTitle = view.findViewById<TextView>(R.id.toolbar_home_title)
-        val toolbarIcon = view.findViewById<ImageView>(R.id.toolbar_home_icon)
-        val viewpager = view.findViewById<ViewPager2>(R.id.viewpager_home_banner)
-        val viewpagerIndicator = view.findViewById<TabLayout>(R.id.viewpager_home_banner_indicator)
+//        val toolbarTitle = view.findViewById<TextView>(R.id.toolbar_home_title)
+//        val toolbarIcon = view.findViewById<ImageView>(R.id.toolbar_home_icon)
+//        val viewpager = view.findViewById<ViewPager2>(R.id.viewpager_home_banner)
+//        val viewpagerIndicator = view.findViewById<TabLayout>(R.id.viewpager_home_banner_indicator)
 
 //        val assetLoader = AssetLoader()
 //        assetLoader.getJsonString(context, "home.json")
@@ -113,30 +117,41 @@ class HomeFragment : Fragment() {
 //            }.attach()
 //        }
 
+        binding.lifecycleOwner = viewLifecycleOwner
+        setToolbar()
+        setTopBanners()
+    }
+
+    private fun setToolbar() {
         viewModel.title.observe(viewLifecycleOwner) { title ->
-            toolbarTitle.text = title.text
-            GlideApp.with(this)
-                .load(title.iconUrl)
-                .into(toolbarIcon)
+    //            toolbarTitle.text = title.text
+    //            GlideApp.with(this)
+    //                .load(title.iconUrl)
+    //                .into(toolbarIcon)
+            binding.title = title
         }
+    }
 
-        viewpager.adapter = HomeBannerAdapter().apply {
-            viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
-                submitList(banners)
+    private fun setTopBanners() {
+        with(binding.viewpagerHomeBanner) {
+            adapter = HomeBannerAdapter().apply {
+                viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
+                    submitList(banners)
+                }
             }
+
+            val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
+            val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
+            val screenWidth = resources.displayMetrics.widthPixels
+            val offset = screenWidth - pageWidth - pageMargin
+
+            offscreenPageLimit = 3
+            setPageTransformer { page, position ->
+                page.translationX = position * -offset
+            }
+            TabLayoutMediator(binding.viewpagerHomeBannerIndicator, this) { tab, position ->
+
+            }.attach()
         }
-
-        val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
-        val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
-        val screenWidth = resources.displayMetrics.widthPixels
-        val offset = screenWidth - pageWidth - pageMargin
-
-        viewpager.offscreenPageLimit = 3
-        viewpager.setPageTransformer { page, position ->
-            page.translationX = position * -offset
-        }
-        TabLayoutMediator(viewpagerIndicator, viewpager) { tab, position ->
-
-        }.attach()
     }
 }
