@@ -1,10 +1,11 @@
-package io.jyryuitpro.shoppi.android
+package io.jyryuitpro.shoppi.android.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.jyryuitpro.shoppi.android.R
 
 class CartFragment : Fragment() {
 

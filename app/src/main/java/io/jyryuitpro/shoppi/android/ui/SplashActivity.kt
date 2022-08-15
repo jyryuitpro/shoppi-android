@@ -1,4 +1,4 @@
-package io.jyryuitpro.shoppi.android
+package io.jyryuitpro.shoppi.android.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

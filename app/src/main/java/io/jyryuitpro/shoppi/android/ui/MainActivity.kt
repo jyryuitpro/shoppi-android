@@ -1,4 +1,4 @@
-package io.jyryuitpro.shoppi.android
+package io.jyryuitpro.shoppi.android.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.jyryuitpro.shoppi.android.R
 
 class MainActivity : AppCompatActivity() {
 
