@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.47760416666666666" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.7979166666666667" />
-        <entry key="app/src/main/res/layout/fragment_category.xml" value="0.7979166666666667" />
+        <entry key="app/src/main/res/layout/fragment_category.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.45" />
         <entry key="app/src/main/res/layout/fragment_product_detail.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_home_banner.xml" value="0.5" />
