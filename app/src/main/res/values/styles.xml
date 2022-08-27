@@ -4,6 +4,12 @@
     <style name="Circle">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="RoundedBig">
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="RoundedMedium">
+        <item name="cornerSize">8dp</item>
+    </style>
     <!--  Text Style  -->
     <style name="TextHeadline32" >
         <item name="android:textSize">32sp</item>

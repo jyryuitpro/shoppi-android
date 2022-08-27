@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_black_gradient.xml" value="0.591" />
         <entry key="app/src/main/res/drawable/background_bluegrey_r20.xml" value="0.3375" />
         <entry key="app/src/main/res/drawable/background_circle_gradient.xml" value="0.607" />
         <entry key="app/src/main/res/drawable/background_purple_r24.xml" value="0.3375" />

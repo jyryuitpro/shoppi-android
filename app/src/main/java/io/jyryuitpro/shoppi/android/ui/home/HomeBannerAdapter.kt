@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import io.jyryuitpro.shoppi.android.databinding.ItemHomeBannerBinding
 import io.jyryuitpro.shoppi.android.model.Banner
 
-class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
+class HomeBannerAdapter(private val viewModel: HomeViewModel) : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
 
     private lateinit var binding: ItemHomeBannerBinding
 
@@ -26,7 +26,7 @@ class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHo
         holder.bind(getItem(position))
     }
 
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root) {
 
 //        private val bannerImageView = view.findViewById<ImageView>(R.id.iv_banner_image)
 //        private val bannerBadgeTextView = view.findViewById<TextView>(R.id.tv_banner_badge)
@@ -57,6 +57,7 @@ class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHo
 //            applyPriceFormat(bannerDetailProductPriceTextView, banner.productDetail.price)
             binding.banner = banner
             // 바로 데이터를 바인딩 하기 위해서 호출합니다.
+            binding.viewModel = viewModel
             binding.executePendingBindings()
         }
 
