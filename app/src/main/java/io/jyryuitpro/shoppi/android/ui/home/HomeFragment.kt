@@ -9,15 +9,19 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import io.jyryuitpro.shoppi.android.R
 import io.jyryuitpro.shoppi.android.common.KEY_CATEGORY_ID
 import io.jyryuitpro.shoppi.android.common.KEY_PRODUCT_ID
+import io.jyryuitpro.shoppi.android.common.SectionTitleAdapter
 import io.jyryuitpro.shoppi.android.databinding.FragmentHomeBinding
 import io.jyryuitpro.shoppi.android.ui.common.EventObserver
+import io.jyryuitpro.shoppi.android.ui.common.ProductClickListener
+import io.jyryuitpro.shoppi.android.ui.common.ProductPromotionAdapter
 import io.jyryuitpro.shoppi.android.ui.common.ViewModelFactory
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ProductClickListener {
 
     // private val viewModel: HomeViewModel by viewModels()
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
@@ -172,8 +176,9 @@ class HomeFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         setToolbar()
-        setTopBanners()
         setNavigation()
+        setTopBanners()
+        setListAdapter()
     }
 
     private fun setToolbar() {
@@ -233,5 +238,21 @@ class HomeFragment : Fragment() {
 
             }.attach()
         }
+    }
+
+    private fun setListAdapter() {
+        val titleAdapter = SectionTitleAdapter()
+        val promotionAdapter = ProductPromotionAdapter(this)
+        binding.rvHome.adapter = ConcatAdapter(titleAdapter, promotionAdapter)
+        viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
+            titleAdapter.submitList(listOf(promotions.title))
+            promotionAdapter.submitList(promotions.items)
+        }
+    }
+
+    override fun onProductClick(productId: String) {
+        findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(
+            KEY_PRODUCT_ID to "desk-1"
+        ))
     }
 }
