@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="category"
             type="io.jyryuitpro.shoppi.android.model.Category" />
