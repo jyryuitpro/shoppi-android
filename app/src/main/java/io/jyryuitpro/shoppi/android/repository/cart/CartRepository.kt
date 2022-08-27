@@ -1,7 +1,7 @@
 package io.jyryuitpro.shoppi.android.repository.cart
 
-import com.shoppi.app.model.CartItem
-import com.shoppi.app.model.Product
+import io.jyryuitpro.shoppi.android.model.CartItem
+import io.jyryuitpro.shoppi.android.model.Product
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,6 +1,7 @@
-package com.shoppi.app.repository.cart
+package io.jyryuitpro.shoppi.android.repository.cart
 
-import com.shoppi.app.model.CartItem
+import io.jyryuitpro.shoppi.android.model.CartItem
+
 
 interface CartItemDataSource {
 

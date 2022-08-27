@@ -11,6 +11,9 @@ import io.jyryuitpro.shoppi.android.common.KEY_PRODUCT_ID
 import io.jyryuitpro.shoppi.android.databinding.FragmentProductDetailBinding
 import io.jyryuitpro.shoppi.android.ui.common.ViewModelFactory
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import io.jyryuitpro.shoppi.android.R
+import io.jyryuitpro.shoppi.android.ui.common.EventObserver
 
 class ProductDetailFragment : Fragment() {
 
@@ -40,7 +43,18 @@ class ProductDetailFragment : Fragment() {
         requireArguments().getString(KEY_PRODUCT_ID)?.let { productId ->
             setLayout(productId)
         }
-//        setAddCart()
+        setAddCart()
+    }
+
+    private fun setAddCart() {
+        viewModel.addCartEvent.observe(viewLifecycleOwner, EventObserver {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(getString(R.string.dialog_title_add_cart))
+                .setPositiveButton(getString(R.string.dialog_button_label_confirm)) { dialog, which ->
+
+                }
+                .show()
+        })
     }
 
     private fun setNavigation() {

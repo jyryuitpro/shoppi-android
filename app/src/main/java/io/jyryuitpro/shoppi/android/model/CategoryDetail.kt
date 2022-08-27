@@ -1,5 +1,4 @@
 package io.jyryuitpro.shoppi.android.model
-
 import com.google.gson.annotations.SerializedName
 
 data class CategoryDetail(

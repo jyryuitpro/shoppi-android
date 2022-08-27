@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.jyryuitpro.shoppi.android.model.CartItem
+import io.jyryuitpro.shoppi.android.repository.cart.CartRepository
 import kotlinx.coroutines.launch
 
 class CartViewModel(private val cartRepository: CartRepository) : ViewModel() {
