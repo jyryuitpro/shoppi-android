@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="io.jyryuitpro.shoppi.android.ui.category.CategoryViewModel" />
 
         <variable
             name="category"
@@ -16,6 +19,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="16dp"
+        android:onClick="@{() -> viewModel.openCategoryDetail(category)}"
         android:background="@drawable/background_bluegrey_r20">
 
         <com.google.android.material.imageview.ShapeableImageView
