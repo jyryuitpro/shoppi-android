@@ -6,6 +6,7 @@
     <color name="shoppi_gradient_purple">#6b19ff</color>
     <color name="shoppi_gradient_pink">#fd62ff</color>
     <color name="shoppi_black_01">#000000</color>
+    <color name="shoppi_black_01_a08">#14000000</color>
     <color name="shoppi_black_02">#111111</color>
     <color name="shoppi_grey_01">#5f5f69</color>
     <color name="shoppi_grey_02">#52514d</color>
@@ -18,5 +19,6 @@
     <color name="shoppi_grey_09">#eeeff1</color>
     <color name="shoppi_bluegrey">#f2f4f6</color>
     <color name="shoppi_white">#ffffff</color>
+    <color name="shoppi_white_a90">#E6FFFFFF</color>
     <color name="shoppi_brown">#967a6d</color>
 </resources>

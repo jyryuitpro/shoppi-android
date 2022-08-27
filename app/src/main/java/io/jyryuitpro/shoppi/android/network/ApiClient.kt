@@ -2,6 +2,7 @@ package io.jyryuitpro.shoppi.android.network
 
 import io.jyryuitpro.shoppi.android.model.Category
 import io.jyryuitpro.shoppi.android.model.CategoryDetail
+import io.jyryuitpro.shoppi.android.model.Product
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,6 +20,9 @@ interface ApiClient {
 
 //    @GET("{categoryId}.json")
 //    suspend fun getCategoryDetail(@Path("categoryId") categoryId: String): CategoryDetail
+
+    @GET("products/{productId}.json")
+    suspend fun getProductDetail(@Path("productId") productId: String): Product
 
     companion object {
 

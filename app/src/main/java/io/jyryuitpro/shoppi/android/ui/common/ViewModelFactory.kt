@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import io.jyryuitpro.shoppi.android.AssetLoader
+import io.jyryuitpro.shoppi.android.ServiceLocator
 import io.jyryuitpro.shoppi.android.network.ApiClient
 import io.jyryuitpro.shoppi.android.repository.category.CategoryRemoteDataSource
 import io.jyryuitpro.shoppi.android.repository.category.CategoryRepository
@@ -11,9 +12,12 @@ import io.jyryuitpro.shoppi.android.repository.categorydetail.CategoryDetailRemo
 import io.jyryuitpro.shoppi.android.repository.categorydetail.CategoryDetailRepository
 import io.jyryuitpro.shoppi.android.repository.home.HomeAssetDataSource
 import io.jyryuitpro.shoppi.android.repository.home.HomeRepository
+import io.jyryuitpro.shoppi.android.repository.productdetail.ProductDetailRemoteDataSource
+import io.jyryuitpro.shoppi.android.repository.productdetail.ProductDetailRepository
 import io.jyryuitpro.shoppi.android.ui.category.CategoryViewModel
 import io.jyryuitpro.shoppi.android.ui.categorydetail.CategoryDetailViewModel
 import io.jyryuitpro.shoppi.android.ui.home.HomeViewModel
+import io.jyryuitpro.shoppi.android.ui.productdetail.ProductDetailViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -29,8 +33,17 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
                 CategoryViewModel(repository) as T
             }
             modelClass.isAssignableFrom(CategoryDetailViewModel::class.java) -> {
-                val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ApiClient.create()))
+                val repository =
+                    CategoryDetailRepository(CategoryDetailRemoteDataSource(ApiClient.create()))
                 CategoryDetailViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ProductDetailViewModel::class.java) -> {
+                val repository = ProductDetailRepository(
+                    ProductDetailRemoteDataSource(
+                        ServiceLocator.provideApiClient()
+                    )
+                )
+                ProductDetailViewModel(repository) as T
             }
             else -> {
                 throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
