@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_product_detail" />
     <fragment
         android:id="@+id/navigation_category_detail"
-        android:name="io.jyryuitpro.shoppi.android.repository.categorydetail.CategoryDetailFragment"
+        android:name="io.jyryuitpro.shoppi.android.ui.categorydetail.CategoryDetailFragment"
         android:label="CategoryDetailFragment"
         tools:layout="@layout/fragment_category_detail" />
 </navigation>
