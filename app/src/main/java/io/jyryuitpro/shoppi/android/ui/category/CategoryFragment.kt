@@ -8,9 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import io.jyryuitpro.shoppi.android.R
+import io.jyryuitpro.shoppi.android.common.KEY_CATEGORY_ID
+import io.jyryuitpro.shoppi.android.common.KEY_CATEGORY_LABEL
 import io.jyryuitpro.shoppi.android.databinding.FragmentCategoryBinding
+import io.jyryuitpro.shoppi.android.model.Category
+import io.jyryuitpro.shoppi.android.ui.common.EventObserver
 import io.jyryuitpro.shoppi.android.ui.common.ViewModelFactory
 
 class CategoryFragment : Fragment() {
@@ -38,15 +43,19 @@ class CategoryFragment : Fragment() {
             categoryAdapter.submitList(it)
         }
 
-        viewModel.openCategoryEvent.observe(viewLifecycleOwner) {
+        viewModel.openCategoryEvent.observe(viewLifecycleOwner, EventObserver {
             openCategoryDetail(it.categoryId, it.label)
-        }
+        })
+
+//        viewModel.openCategoryEvent.observe(viewLifecycleOwner) {
+//            openCategoryDetail(it.categoryId, it.label)
+//        }
     }
 
     private fun openCategoryDetail(categoryId: String, categoryLabel: String) {
         findNavController().navigate(R.id.action_category_to_category_detail, bundleOf(
-            "category_id" to categoryId,
-            "category_label" to categoryLabel,
+            KEY_CATEGORY_ID to categoryId,
+            KEY_CATEGORY_LABEL to categoryLabel,
         ))
     }
 }
