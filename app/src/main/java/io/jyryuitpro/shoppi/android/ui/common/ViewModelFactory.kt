@@ -14,6 +14,7 @@ import io.jyryuitpro.shoppi.android.repository.home.HomeAssetDataSource
 import io.jyryuitpro.shoppi.android.repository.home.HomeRepository
 import io.jyryuitpro.shoppi.android.repository.productdetail.ProductDetailRemoteDataSource
 import io.jyryuitpro.shoppi.android.repository.productdetail.ProductDetailRepository
+import io.jyryuitpro.shoppi.android.ui.cart.CartViewModel
 import io.jyryuitpro.shoppi.android.ui.category.CategoryViewModel
 import io.jyryuitpro.shoppi.android.ui.categorydetail.CategoryDetailViewModel
 import io.jyryuitpro.shoppi.android.ui.home.HomeViewModel
@@ -44,6 +45,9 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
                     )
                 )
                 ProductDetailViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(CartViewModel::class.java) -> {
+                CartViewModel(ServiceLocator.provideCartRepository(context)) as T
             }
             else -> {
                 throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
