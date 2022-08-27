@@ -13,4 +13,5 @@
     <!-- Image description -->
     <string name="description_product_thumbnail">상품 상세 대표 이미지</string>
     <string name="description_product_detail_image">상품 상세 이미지</string>
+    <string name="label_category_new">NEW</string>
 </resources>

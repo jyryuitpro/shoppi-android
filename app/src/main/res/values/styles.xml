@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ImageView Style -->
+    <style name="Circle">
+        <item name="cornerSize">50%</item>
+    </style>
     <!--  Text Style  -->
     <style name="TextHeadline32" >
         <item name="android:textSize">32sp</item>

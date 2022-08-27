@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import io.jyryuitpro.shoppi.android.AssetLoader
 import io.jyryuitpro.shoppi.android.network.ApiClient
-import io.jyryuitpro.shoppi.android.repository.CategoryRemoteDataSource
-import io.jyryuitpro.shoppi.android.repository.CategoryRepository
-import io.jyryuitpro.shoppi.android.repository.HomeAssetDataSource
-import io.jyryuitpro.shoppi.android.repository.HomeRepository
+import io.jyryuitpro.shoppi.android.repository.category.CategoryRemoteDataSource
+import io.jyryuitpro.shoppi.android.repository.category.CategoryRepository
+import io.jyryuitpro.shoppi.android.repository.home.HomeAssetDataSource
+import io.jyryuitpro.shoppi.android.repository.home.HomeRepository
 import io.jyryuitpro.shoppi.android.ui.category.CategoryViewModel
 import io.jyryuitpro.shoppi.android.ui.home.HomeViewModel
 
