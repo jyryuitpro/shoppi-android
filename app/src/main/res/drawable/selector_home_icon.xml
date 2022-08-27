@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- selector: 컴포넌트의 상태에 따라서 다른 리소스를 보여줘야하는 drawable을 만들 경우 사용하는 태그 -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/ic_tabbar_home_on" android:state_selected="true" />
     <item android:drawable="@drawable/ic_tabbar_home_off" />

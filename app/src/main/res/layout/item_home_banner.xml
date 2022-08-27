@@ -37,7 +37,8 @@
             android:text="@{banner.badge.label}"
             app:layout_constraintBottom_toTopOf="@id/tv_banner_title"
             app:layout_constraintStart_toStartOf="@id/iv_banner_image"
-            tools:background="@{banner.badge.backgroundColor}"
+            android:background="@{banner.badge.backgroundColor}"
+            tools:background="@color/shoppi_grey_02"
             tools:text="기획전" />
 
         <TextView
@@ -54,6 +55,7 @@
             app:layout_constraintStart_toStartOf="@id/iv_banner_image"
             tools:text="따스한 겨울\n준비하기" />
 
+        <!-- 하단 상품 상세정보 -->
         <View
             android:id="@+id/bg_banner_product_detail"
             android:layout_width="288dp"
@@ -76,6 +78,7 @@
             app:layout_constraintStart_toStartOf="@id/bg_banner_product_detail"
             app:layout_constraintTop_toTopOf="@id/bg_banner_product_detail" />
 
+        <!-- 대칭(layout_marginStart, layout_marginEnd) -->
         <TextView
             android:id="@+id/tv_banner_detail_brand_label"
             android:layout_width="0dp"

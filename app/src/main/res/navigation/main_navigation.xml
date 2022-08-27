@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="io.jyryuitpro.shoppi.android.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_to_product_detail"
             app:destination="@id/navigation_product_detail" />
     </fragment>
     <fragment
         android:id="@+id/navigation_category"
-        android:name="io.jyryuitpro.shoppi.android.ui.CategoryFragment"
-        android:label="fragment_category"
+        android:name="io.jyryuitpro.shoppi.android.ui.category.CategoryFragment"
+        android:label="CategoryFragment"
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/navigation_cart"
         android:name="io.jyryuitpro.shoppi.android.ui.CartFragment"
-        android:label="fragment_cart"
+        android:label="CartFragment"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/navigation_product_detail"

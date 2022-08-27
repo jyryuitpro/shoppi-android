@@ -22,6 +22,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- 제품 상세화면 -->
+    <!-- <dimen name="abc_text_size_medium_material">18sp</dimen> -->
     <style name="TextMedium" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>
@@ -38,6 +40,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- .은 확장의 의미 -->
+    <!-- <item name="android:textSize">16sp</item> -->
     <style name="TextSubtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>
@@ -55,6 +59,7 @@
         <item name="android:textColor">@color/shoppi_white</item>
     </style>
 
+    <!-- <item name="android:textSize">14sp</item> -->
     <style name="TextSubtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>

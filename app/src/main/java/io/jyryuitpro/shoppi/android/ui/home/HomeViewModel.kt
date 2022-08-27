@@ -20,7 +20,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     }
 
     private fun loadHomeData() {
-        // todo: Data Layer - Repository 에 요청
+        // TODO Data Layer - Repository 에 요청
         val homeData = homeRepository.getHomeData()
         homeData?.let {
             _title.value = homeData.title

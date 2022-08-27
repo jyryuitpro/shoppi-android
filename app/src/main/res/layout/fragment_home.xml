@@ -19,6 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- app:layout_scrollFlags="scroll|enterAlways" -->
+            <!-- app:contentInsetStart="0dp": Toolbar 기본 paddingStart 제거-->
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,6 +28,7 @@
                 app:contentInsetStart="0dp"
                 app:layout_scrollFlags="scroll|enterAlways">
 
+                <!-- 대칭(paddingStart, paddingEnd), marginEnd -->
                 <TextView
                     android:id="@+id/toolbar_home_title"
                     style="@style/TextHeadline5.Black02.Bold"
@@ -40,6 +43,7 @@
                     android:text="@{title.text}"
                     tools:text="류지영님, 이런 상품\n어때요?" />
 
+                <!-- android:scaleType="center" -->
                 <ImageView
                     android:id="@+id/toolbar_home_icon"
                     imageUrl="@{title.iconUrl}"
@@ -54,6 +58,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <!-- app:layout_behavior="@string/appbar_scrolling_view_behavior" -->
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -71,6 +76,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- app:tabGravity="center" -->
+                <!-- app:tabIndicatorHeight="0dp"-->
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/viewpager_home_banner_indicator"
                     android:layout_width="0dp"
