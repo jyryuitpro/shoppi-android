@@ -11,9 +11,13 @@
         <entry key="app/src/main/res/drawable/background_splash_screen.xml" value="0.473" />
         <entry key="app/src/main/res/drawable/background_top_rounded.xml" value="0.591" />
         <entry key="app/src/main/res/drawable/background_white.xml" value="0.505" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.591" />
+        <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.591" />
+        <entry key="app/src/main/res/drawable/ic_selected_off.xml" value="0.591" />
         <entry key="app/src/main/res/drawable/selected_viewpager_indicator.xml" value="0.4235" />
         <entry key="app/src/main/res/drawable/selector_cart_icon.xml" value="0.474" />
         <entry key="app/src/main/res/drawable/selector_category_icon.xml" value="0.473" />
+        <entry key="app/src/main/res/drawable/selector_checkbox.xml" value="0.591" />
         <entry key="app/src/main/res/drawable/selector_home_icon.xml" value="0.473" />
         <entry key="app/src/main/res/drawable/selector_viewpager_indicator.xml" value="0.505" />
         <entry key="app/src/main/res/drawable/unselected_viewpager_indicator.xml" value="0.4235" />
@@ -25,6 +29,8 @@
         <entry key="app/src/main/res/layout/fragment_category_detail.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3765432098765432" />
         <entry key="app/src/main/res/layout/fragment_product_detail.xml" value="0.33010127127774186" />
+        <entry key="app/src/main/res/layout/item_cart_section.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_cart_section_header.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_category.xml" value="0.625" />
         <entry key="app/src/main/res/layout/item_category_promotion.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_category_top_selling.xml" value="0.5" />
